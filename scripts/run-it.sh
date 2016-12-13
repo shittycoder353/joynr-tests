@@ -1,5 +1,5 @@
 #!/bin/bash
-
+timeStamp=$(date +"%y%m%d-%H%M%S")
 # $1->deployDir
 if [ "$1" != "" ] ; then
   [ -d "$1" ] || exit 1

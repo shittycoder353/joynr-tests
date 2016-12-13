@@ -111,7 +111,7 @@ if [ ! -d "$thisDir/../deploy" ] ; then
 fi
 
 msg 2 "[info]...copy tests files to deploy dir: $thisDir/../deploy" $logFile
-cp -rf "$thisDir/../download/joynr_$joynrVer/cpp/build/bin/" "$thisDir/../deploy"
+cp -vr "$thisDir/../download/joynr_0.21.4/cpp/build/bin/." "$thisDir/../deploy/"
 
 msg 2 "[info]...copy backened-services files to deploy dir: $thisDir/../deploy/backend-services/discovery-directory-servlet" $logFile
 cp -rf "$thisDir/../download/joynr_$joynrVer/java/backend-services/discovery-directory-servlet" "$thisDir/../deploy/"
