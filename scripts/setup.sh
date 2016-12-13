@@ -31,19 +31,19 @@ fi
 # checking cloning/copy joynr from git/local, init git and checkout to right version
 #######################
 git clone https://github.com/bmwcarit/joynr.git $thisDir/../download/joynr_$joynrVer  >> $logFile
-if [ "${PIPESTATUS[0]}" != "0" ] ; then
-  msg 1 "[erro]... clone" $logFile
-  exit 2
-fi
+#if [ "${PIPESTATUS[0]}" != "0" ] ; then
+#  msg 1 "[erro]... clone" $logFile
+#  exit 2
+#fi
 
 msg 2 "[info]...checkout joynr to version $joynrVer" $logFile
 cd $thisDir/../download/joynr_$joynrVer
 git checkout tags/$joynrVer >> $logFile
 cd $thisDir
-if [ "${PIPESTATUS[0]}" != "0" ] ; then
-  msg 1 "[erro]... checkout" $logFile
-  exit 2
-fi
+#if [ "${PIPESTATUS[0]}" != "0" ] ; then
+#  msg 1 "[erro]... checkout" $logFile
+#  exit 2
+#fi
 
 #######################
 # download joynr-generator and generating files via generator
@@ -61,20 +61,20 @@ else
   else
     wget http://central.maven.org/maven2/io/joynr/tools/generator/joynr-generator-standalone/$joynrVer/joynr-generator-standalone-$joynrVer.jar
   fi
-  if [ "${PIPESTATUS[0]}" != "0" ]; then
-    msg 1 "[erro]...joynr-generator-standalone-$joynrVer was not downloaded FATAL ERROR" $logFile
-    exit 5
-  fi
+  #if [ "${PIPESTATUS[0]}" != "0" ]; then
+  #  msg 1 "[erro]...joynr-generator-standalone-$joynrVer was not downloaded FATAL ERROR" $logFile
+  #  exit 5
+  #fi
 fi
 
 
 msg 2 "[info]...generating cpp files for cpp joynr from <joynrDir>/basemodel/src/main/franca/ to <joynrDir>/cpp/libjoynr/" $logFile
 java -jar joynr-generator-standalone-$joynrVer.jar -outputPath ./cpp/libjoynr/ -modelpath ./basemodel/src/main/franca/ -generationLanguage cpp
 java -jar ./joynr-generator-standalone-$joynrVer.jar -outputPath ./cpp/tests/gen -modelpath ./basemodel/src/test/franca/ -generationLanguage cpp
-if [ "${PIPESTATUS[0]}" != "0" ]; then
-  msg 1 "[erro]...cpp files was not generated from <joynrDir>/basemodel/src/main/franca/ to <joynrDir>/cpp/libjoynr/ via joynr-generator-standalone-$joynrVer FATAL ERROR" $logFile
-  exit 5
-fi
+#if [ "${PIPESTATUS[0]}" != "0" ]; then
+#  msg 1 "[erro]...cpp files was not generated from <joynrDir>/basemodel/src/main/franca/ to <joynrDir>/cpp/libjoynr/ via joynr-generator-standalone-$joynrVer FATAL ERROR" $logFile
+#  exit 5
+#fi
 
 #######################
 # run cmake and make for joynr
@@ -87,17 +87,17 @@ cd $thisDir/../download/joynr_$joynrVer/cpp/build
 msg 2 "[info]...run cmake for joynr cpp files" $logFile
 cmake $cmakeCmds ../ | tee -a $logFile
 #cmake ../
-if [ "${PIPESTATUS[0]}" != "0" ]; then
-  msg 1 "[erro]...cmake" $logFile
-  exit 6
-fi
+#if [ "${PIPESTATUS[0]}" != "0" ]; then
+#  msg 1 "[erro]...cmake" $logFile
+#  exit 6
+#fi
 msg 2 "[info]...run make for joynr cpp files" $logFile
 make -j4 | tee -a $logFile
 #make
-if [ "${PIPESTATUS[0]}" != "0" ]; then
-  msg 1 "[erro]...make" $logFile
-  exit 6
-fi
+#if [ "${PIPESTATUS[0]}" != "0" ]; then
+#  msg 1 "[erro]...make" $logFile
+#  exit 6
+#fi
 
 #######################
 # copy builded files to deploy dir
