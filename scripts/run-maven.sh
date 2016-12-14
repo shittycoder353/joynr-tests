@@ -12,7 +12,7 @@ else
 fi
 
 cd $thisDir/../deploy/discovery-directory-servlet
-$thisDir/../maven/apache-maven-3.2.2/bin/mvn jetty:run
+$thisDir/../maven/apache-maven-3.2.2/bin/mvn jetty:run </dev/null 2>&1 &
 
 #$thisDir/../maven/apache-maven-3.2.2/bin/mvn $thisDir/../deploy/discovery-directory-servlet/jetty:run
   
