@@ -63,6 +63,7 @@ mkdir ./sit
 ln -s $thisDir/g_SystemIntegrationTests $thisDir/sit/g_SystemIntegrationTests
 ln -s $thisDir/resources/ $thisDir/sit/resources
 ln -s $thisDir/test-resources/ $thisDir/sit/test-resources
+ln -s $thisDir/*.so* $thisDir/sit/ 
 cd ./sit
 ./g_SystemIntegrationTests
 

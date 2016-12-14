@@ -13,6 +13,7 @@ thisDir=$(pwd)
 mkdir ./it
 ln -s $thisDir/g_IntegrationTests $thisDir/it/g_IntegrationTests
 ln -s $thisDir/resources/ $thisDir/it/resources
+ln -s $thisDir/*.so* $thisDir/it/ 
 cd ./it
 
 touch "$thisDir/../testsXml/it_$timeStamp.xml"

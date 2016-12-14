@@ -14,6 +14,7 @@ thisDir=$(pwd)
 mkdir ./ut
 ln -s $thisDir/g_UnitTests $thisDir/ut/g_UnitTests
 ln -s $thisDir/resources/ $thisDir/ut/resources
+ln -s $thisDir/*.so* $thisDir/ut/ 
 cd ./ut
 
 touch "$thisDir/../testsXml/ut_$timeStamp.xml"
